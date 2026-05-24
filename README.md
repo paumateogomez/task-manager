@@ -4,11 +4,12 @@ Simple task manager built with Python to practice clean code, Git, GitHub and pr
 
 ## Features
 
-- Create tasks
-- List tasks
+- View tasks
+- Add new tasks
 - Mark tasks as completed
 - Delete tasks
-- Save tasks in a local file
+- Validate user input
+- Save and load tasks using JSON
 
 ## Technologies
 
