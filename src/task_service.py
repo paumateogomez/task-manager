@@ -52,7 +52,7 @@ def complete_task():
         task_number = int(input("\nTask number to complete: "))
         if task_number < 1 or task_number > len(tasks):
             print("Invalid task number.")
-    return
+            return
         tasks[task_number - 1]["completed"] = True
         save_tasks()
         print("Task completed successfully!")
