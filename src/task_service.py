@@ -27,16 +27,18 @@ def view_tasks():
 
     for index, task in enumerate(tasks, start=1):
         status = "[X]" if task["completed"] else "[ ]"
-        print(f"{index}. {status} {task['title']}")
+        priority = task.get("priority", "MEDIUM")
+        print(f"{index}. {status} [{priority}] {task['title']}")
 
 
 def add_task():
     task = input("\nEnter the new task: ")
-
+    priority = input("Enter priority (LOW/MEDIUM/HIGH): ").upper()
     tasks.append({
-        "title": task,
-        "completed": False
-    })
+    "title": task,
+    "completed": False,
+    "priority": priority
+})
 
     save_tasks()
     print("Task added successfully!")
