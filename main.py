@@ -30,6 +30,40 @@ def add_task():
 
     print("Task added successfully!")
 
+def complete_task():
+
+    view_tasks()
+
+    if not tasks:
+        return
+
+    try:
+        task_number = int(input("\nTask number to complete: "))
+
+        tasks[task_number - 1]["completed"] = True
+
+        print("Task completed successfully!")
+
+    except:
+        print("Invalid task number.")
+        
+
+def delete_task():
+
+    view_tasks()
+
+    if not tasks:
+        return
+
+    try:
+        task_number = int(input("\nTask number to delete: "))
+
+        deleted_task = tasks.pop(task_number - 1)
+
+        print(f"Task '{deleted_task['title']}' deleted successfully!")
+
+    except:
+        print("Invalid task number.")
 
 def main():
     while True:
@@ -47,7 +81,7 @@ def main():
             complete_task()
 
         elif option == "4":
-            print("Deleting task...")
+            delete_task()
 
         elif option == "5":
             print("Goodbye!")
@@ -56,22 +90,6 @@ def main():
         else:
             print("Invalid option")
 
-def complete_task():
-
-    view_tasks()
-
-    if not tasks:
-        return
-
-    try:
-        task_number = int(input("\nTask number to complete: "))
-
-        tasks[task_number - 1]["completed"] = True
-
-        print("Task completed successfully!")
-
-    except:
-        print("Invalid task number.")
 
 if __name__ == "__main__":
     main()
