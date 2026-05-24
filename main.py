@@ -1,3 +1,6 @@
+tasks = []
+
+
 def show_menu():
     print("\n=== TASK MANAGER ===")
     print("1. View tasks")
@@ -7,6 +10,25 @@ def show_menu():
     print("5. Exit")
 
 
+def view_tasks():
+    if not tasks:
+        print("\nNo tasks available.")
+        return
+
+    print("\nTasks:")
+
+    for index, task in enumerate(tasks, start=1):
+        print(f"{index}. {task}")
+
+
+def add_task():
+    task = input("\nEnter the new task: ")
+
+    tasks.append(task)
+
+    print("Task added successfully!")
+
+
 def main():
     while True:
         show_menu()
@@ -14,10 +36,10 @@ def main():
         option = input("\nSelect an option: ")
 
         if option == "1":
-            print("Viewing tasks...")
+            view_tasks()
 
         elif option == "2":
-            print("Adding task...")
+            add_task()
 
         elif option == "3":
             print("Completing task...")
