@@ -18,13 +18,15 @@ def view_tasks():
     print("\nTasks:")
 
     for index, task in enumerate(tasks, start=1):
-        print(f"{index}. {task}")
 
+        status = "[X]" if task["completed"] else "[ ]"
+
+        print(f"{index}. {status} {task['title']}")
 
 def add_task():
     task = input("\nEnter the new task: ")
 
-    tasks.append(task)
+    tasks.append({"title": task, "completed": False  })
 
     print("Task added successfully!")
 
@@ -42,7 +44,7 @@ def main():
             add_task()
 
         elif option == "3":
-            print("Completing task...")
+            complete_task()
 
         elif option == "4":
             print("Deleting task...")
@@ -54,6 +56,22 @@ def main():
         else:
             print("Invalid option")
 
+def complete_task():
+
+    view_tasks()
+
+    if not tasks:
+        return
+
+    try:
+        task_number = int(input("\nTask number to complete: "))
+
+        tasks[task_number - 1]["completed"] = True
+
+        print("Task completed successfully!")
+
+    except:
+        print("Invalid task number.")
 
 if __name__ == "__main__":
     main()
