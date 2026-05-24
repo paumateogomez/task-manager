@@ -50,6 +50,9 @@ def complete_task():
 
     try:
         task_number = int(input("\nTask number to complete: "))
+        if task_number < 1 or task_number > len(tasks):
+            print("Invalid task number.")
+    return
         tasks[task_number - 1]["completed"] = True
         save_tasks()
         print("Task completed successfully!")
@@ -66,6 +69,9 @@ def delete_task():
 
     try:
         task_number = int(input("\nTask number to delete: "))
+        if task_number < 1 or task_number > len(tasks):
+            print("Invalid task number.")
+            return
         deleted_task = tasks.pop(task_number - 1)
         save_tasks()
         print(f"Task '{deleted_task['title']}' deleted successfully!")
