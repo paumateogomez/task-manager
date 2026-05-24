@@ -1,5 +1,17 @@
+import json
+
 tasks = []
 
+def load_tasks():
+
+    global tasks
+
+    try:
+        with open("data/tasks.json", "r") as file:
+            tasks = json.load(file)
+
+    except:
+        tasks = []
 
 def show_menu():
     print("\n=== TASK MANAGER ===")
@@ -28,6 +40,8 @@ def add_task():
 
     tasks.append({"title": task, "completed": False  })
 
+    save_tasks()
+
     print("Task added successfully!")
 
 def complete_task():
@@ -41,6 +55,8 @@ def complete_task():
         task_number = int(input("\nTask number to complete: "))
 
         tasks[task_number - 1]["completed"] = True
+
+        save_tasks()
 
         print("Task completed successfully!")
 
@@ -60,12 +76,20 @@ def delete_task():
 
         deleted_task = tasks.pop(task_number - 1)
 
+        save_tasks()
+
         print(f"Task '{deleted_task['title']}' deleted successfully!")
 
     except:
         print("Invalid task number.")
 
+def save_tasks():
+
+    with open("data/tasks.json", "w") as file:
+        json.dump(tasks, file, indent=4)
+
 def main():
+    load_tasks()
     while True:
         show_menu()
 
