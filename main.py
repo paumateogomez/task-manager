@@ -3,7 +3,8 @@ from src.task_service import (
     view_tasks,
     add_task,
     complete_task,
-    delete_task
+    delete_task,
+    search_tasks
 )
 
 
@@ -13,7 +14,8 @@ def show_menu():
     print("2. Add task")
     print("3. Complete task")
     print("4. Delete task")
-    print("5. Exit")
+    print("5. Search task")
+    print("6. Exit")
 
 
 def main():
@@ -33,10 +35,10 @@ def main():
         elif option == "4":
             delete_task()
         elif option == "5":
+            search_tasks()
+        elif option == "6":
             print("Goodbye!")
             break
-        else:
-            print("Invalid option")
 
 
 if __name__ == "__main__":

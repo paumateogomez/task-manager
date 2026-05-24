@@ -80,3 +80,27 @@ def delete_task():
 
     except:
         print("Invalid task number.")
+
+def search_tasks():
+
+    keyword = input("\nEnter search keyword: ").lower()
+
+    found_tasks = []
+
+    for task in tasks:
+
+        if keyword in task["title"].lower():
+            found_tasks.append(task)
+
+    if not found_tasks:
+        print("No matching tasks found.")
+        return
+
+    print("\nMatching tasks:")
+
+    for index, task in enumerate(found_tasks, start=1):
+
+        status = "[X]" if task["completed"] else "[ ]"
+        priority = task.get("priority", "MEDIUM")
+
+        print(f"{index}. {status} [{priority}] {task['title']}")
